@@ -13,7 +13,6 @@ int main() {
     int id = omp_get_thread_num();
     #pragma omp barrier
 
-    #pragma omp nowait
     {
       sleep(id);
     }
