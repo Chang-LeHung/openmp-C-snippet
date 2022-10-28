@@ -16,6 +16,7 @@ void* func1() {
   printf("num threads = %d\n", omp_get_num_threads());
   data = 0;
   printf("func1 finished~\n");
+  return NULL;
 }
 
 void* func2() {
@@ -27,6 +28,7 @@ void* func2() {
     // asm volatile("mfence":::"memory");
   }
   printf("func2 finished~\n");
+  return NULL;
 }
 
 int main() {
