@@ -13,7 +13,7 @@ int main() {
   #pragma omp parallel
   {
     a[omp_get_thread_num()] = rand() % 10;
-    #pragma omp barrrier
+    #pragma omp barrier
 
     #pragma omp for ordered // ordered 必须使用 parallel for
     for(int i = 0; i < 10; i++) 
