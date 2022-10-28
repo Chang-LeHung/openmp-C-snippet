@@ -7,7 +7,7 @@ all: $(cobjs)
 
 %.out: %.c 
 	$(cc) $(cflags) $< -o $@
-.PHNOY: clean
+.PHNOY: clean a
 
 clean:
 	@rm $(cobjs)
