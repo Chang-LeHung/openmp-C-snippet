@@ -1,7 +1,7 @@
 
 cfiles += $(wildcard *.c flush/*.c task/*.c group/*c)
 cobjs += $(patsubst %.c, %.out, $(cfiles))
-cc = clang	
+cc = clang
 cflags = -fopenmp -g
 all: $(cobjs)
 

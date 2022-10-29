@@ -13,8 +13,7 @@ int main() {
   {
     #pragma omp single
     {
-    #pragma omp task 
-    {
+
       #pragma omp task
       {
         printf("finish task 1 && pid = %d\n", omp_get_thread_num());
@@ -48,8 +47,6 @@ int main() {
           printf("gpid = %d pid = %d\n", gpid, omp_get_thread_num());
         }
       }
-    }
-
     }
   }
   return 0;
