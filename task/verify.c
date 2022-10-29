@@ -26,26 +26,18 @@ int main() {
 
       #pragma omp task shared(gpid) untied
       {
-        #pragma omp critical
-        {
-          gpid = omp_get_thread_num();
-          printf("gpid = %d\n", gpid);
-        }
+        gpid = omp_get_thread_num();
         while(gpid == omp_get_thread_num()) {
           sleep(1);
           printf("pid = %d yield\n", omp_get_thread_num());
           #pragma omp taskyield
         }
-        printf("finish task 3 && pid = %d\n", omp_get_thread_num());
+        printf("finish task 3 && pid = %d && gpid = %d\n", omp_get_thread_num(), gpid);
       }
 
       #pragma omp task shared(gpid)
       {
         printf("task 4 pid = %d\n", omp_get_thread_num());
-        for(int i = 0; i < 3; i++) {
-          sleep(1);
-          printf("gpid = %d pid = %d\n", gpid, omp_get_thread_num());
-        }
       }
     }
   }

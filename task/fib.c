@@ -23,9 +23,10 @@ int main() {
   {
     #pragma omp single
     {
-      int rs = fib(38);
+      int rs = fib(10);
       printf("result = %d\n", rs);
     }
   }
+  while(1);
   return 0;
 }
