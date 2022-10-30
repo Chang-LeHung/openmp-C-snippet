@@ -54,45 +54,7 @@ int main() {
 
       #pragma omp task
       {
-        #pragma omp critical
-        {
-          printf("task 1 pid = %d\n", omp_get_thread_num());
-          FIND_RSP_RBP
-          STACK_DEBUG
-          HLINE
-        }
-      }
-
-      #pragma omp task shared(gpid)
-      {
-        #pragma omp critical
-        {
-          printf("task 2 pid = %d\n", omp_get_thread_num());
-          FIND_RSP_RBP
-          STACK_DEBUG
-          HLINE
-        }
-      }
-
-      #pragma omp task shared(gpid) untied
-      {
-        #pragma omp critical
-        {
-          printf("task 3 pid = %d\n", omp_get_thread_num());
-          FIND_RSP_RBP
-          STACK_DEBUG
-        }
-        int data = 100;
-        gpid = omp_get_thread_num();
-        while(gpid == omp_get_thread_num() && data >= 95) {
-          sleep(1);
-          data--;
-          printf("pid = %d yield data = %d\n", omp_get_thread_num(),
-                data);
-          FIND_RSP_RBP
-          STACK_DEBUG
-          #pragma omp taskyield
-        } 
+        printf("task 1 pid = %d\n", omp_get_thread_num());
         FIND_RSP_RBP
         STACK_DEBUG
         HLINE
@@ -100,13 +62,39 @@ int main() {
 
       #pragma omp task shared(gpid)
       {
-        #pragma omp critical
-        {
+        printf("task 2 pid = %d\n", omp_get_thread_num());
+        FIND_RSP_RBP
+        STACK_DEBUG
+        HLINE
+      }
+
+      #pragma omp task shared(gpid) untied
+      {
+        printf("task 3 pid = %d\n", omp_get_thread_num());
+        FIND_RSP_RBP
+        STACK_DEBUG
+        int data = 100;
+        gpid = omp_get_thread_num();
+        while(gpid == omp_get_thread_num() && data >= 95) {
+          sleep(1);
+          data--;
+          printf("pid = %d yield data = %d\n", omp_get_thread_num(), data);
+          FIND_RSP_RBP
+          STACK_DEBUG
+          #pragma omp taskyield
+        }
+        FIND_RSP_RBP
+        STACK_DEBUG
+        HLINE
+        printf("pid = %d yield data = %d\n", omp_get_thread_num(), data);
+      }
+
+      #pragma omp task shared(gpid)
+      {
           printf("task 4 pid = %d\n", omp_get_thread_num());
           FIND_RSP_RBP
           STACK_DEBUG
           HLINE
-        }
       }
     }
   }
