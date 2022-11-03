@@ -31,6 +31,7 @@
   "files.associations": {
     "omp.h": "c",
     "string.h": "c",
-    "thread": "cpp"
+    "thread": "cpp",
+    "ranges": "c"
   }
 }
