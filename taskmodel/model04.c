@@ -1,5 +1,5 @@
 
-
+/// 一个线程只要开始执行一个任务他就不会切换到其他任务执行
 #include <omp.h>
 #include <stdio.h>
 #include <sys/types.h>

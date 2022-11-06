@@ -11,8 +11,8 @@
 #define COLOR_RED "\033[1;31m"
 #define COLOR_GREY "\033[1;30m"
 
-#define STACK_DEBUG printf("tid = %d"COLOR_RED" rsp = %lx"COLOR_NORMAL \
-                            COLOR_GREEN" rbp = %lx"COLOR_NORMAL"\n", \
+#define STACK_DEBUG printf("tid = %d"COLOR_RED" rsp = 0x%lx"COLOR_NORMAL \
+                            COLOR_GREEN" rbp = 0x%lx"COLOR_NORMAL"\n", \
                             omp_get_thread_num(), rsp, rbp);
 
 #define FIND_RSP_RBP \
@@ -37,7 +37,7 @@ int main() {
     printf("This is outside top\n");
     HLINE
 
-    #pragma omp task
+    #pragma omp task untied
     {
       printf("Enter task 1\n");
       FIND_RSP_RBP
@@ -51,7 +51,7 @@ int main() {
       HLINE
     }
 
-    #pragma omp task
+    #pragma omp task untied
     {
       printf("Enter task 2\n");
       FIND_RSP_RBP
