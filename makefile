@@ -1,9 +1,10 @@
 # c set up
 all_dir := $(shell python3 scan.py c)
+all_dir += ./*.c
 cfiles := $(wildcard $(all_dir))
 cobjs := $(patsubst %.c, %.out, $(cfiles))
 cc = clang
-cflags = -fopenmp -g -lpthread -lm
+cflags = -fopenmp -g -lm
 
 
 # cpp set up

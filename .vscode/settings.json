@@ -32,6 +32,10 @@
     "omp.h": "c",
     "string.h": "c",
     "thread": "cpp",
-    "ranges": "c"
+    "ranges": "c",
+    "stdio.h": "c",
+    "array": "c",
+    "string": "c",
+    "string_view": "c"
   }
 }

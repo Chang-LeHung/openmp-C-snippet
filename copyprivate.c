@@ -16,7 +16,7 @@ int main() {
 
   #pragma omp parallel 
   {
-      sleep(1);
+    sleep(1);
     #pragma omp single copyprivate(x)
     {
       printf("tid = %d\n", omp_get_thread_num());
